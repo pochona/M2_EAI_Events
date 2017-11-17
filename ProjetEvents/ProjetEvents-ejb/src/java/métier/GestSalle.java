@@ -14,6 +14,16 @@ import javax.ejb.Stateless;
 @Stateless
 public class GestSalle implements GestSalleLocal {
 
+    @Override
+    public String réserverSalle() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public String annuelerSalle(int numSalle) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

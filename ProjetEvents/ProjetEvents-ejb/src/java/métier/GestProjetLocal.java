@@ -13,5 +13,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface GestProjetLocal {
-    public String demandePrestation();
+    
+    public String demanderPrestation();
+    
+    public String annulerPrestation();
 }

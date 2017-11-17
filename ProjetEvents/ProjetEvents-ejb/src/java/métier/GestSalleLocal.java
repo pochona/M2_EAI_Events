@@ -14,4 +14,7 @@ import javax.ejb.Local;
 @Local
 public interface GestSalleLocal {
     
+    public String réserverSalle();
+    
+    public String annuelerSalle(int numSalle);
 }

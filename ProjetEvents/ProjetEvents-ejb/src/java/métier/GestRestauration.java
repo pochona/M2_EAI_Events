@@ -14,6 +14,16 @@ import javax.ejb.Stateless;
 @Stateless
 public class GestRestauration implements GestRestaurationLocal {
 
+    @Override
+    public String réserverPersonnel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean vérifierStock() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }

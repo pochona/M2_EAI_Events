@@ -15,10 +15,15 @@ import javax.ejb.Stateless;
 public class GestProjet implements GestProjetLocal {
 
     @Override
-    public String demandePrestation() {
+    public String demanderPrestation() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public String annulerPrestation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
