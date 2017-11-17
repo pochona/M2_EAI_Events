@@ -23,7 +23,7 @@ public class GestSalle implements GestSalleLocal {
     // "Insert Code > Add Business Method")
 
     @Override
-    public String annuelerSalle(int numSalle) {
+    public String annulerSalle(int numSalle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -6,6 +6,7 @@
 package métier;
 
 import javax.ejb.Local;
+import messages.Projet;
 
 /**
  *
@@ -14,7 +15,7 @@ import javax.ejb.Local;
 @Local
 public interface GestProjetLocal {
     
-    public String demanderPrestation();
+    public String demanderPrestation(Projet projet);
     
-    public String annulerPrestation();
+    public String annulerPrestation(Projet projet);
 }

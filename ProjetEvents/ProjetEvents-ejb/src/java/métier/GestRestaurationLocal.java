@@ -13,7 +13,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface GestRestaurationLocal {
+    
     public String réserverPersonnel();
+    
     public boolean vérifierStock();
     
 }

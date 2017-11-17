@@ -6,15 +6,18 @@
 package métier;
 
 import javax.ejb.Local;
+import javax.ejb.Singleton;
+import javax.ejb.LocalBean;
 
 /**
  *
  * @author Caro
  */
-@Local
+@LocalBean
+@Singleton
 public interface GestSalleLocal {
     
     public String réserverSalle();
     
-    public String annuelerSalle(int numSalle);
+    public String annulerSalle(int numSalle);
 }

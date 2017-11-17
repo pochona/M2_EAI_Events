@@ -6,6 +6,7 @@
 package métier;
 
 import javax.ejb.Stateless;
+import messages.Projet;
 
 /**
  *
@@ -15,15 +16,12 @@ import javax.ejb.Stateless;
 public class GestProjet implements GestProjetLocal {
 
     @Override
-    public String demanderPrestation() {
+    public String demanderPrestation(Projet projet) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
     @Override
-    public String annulerPrestation() {
+    public String annulerPrestation(Projet projet) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
