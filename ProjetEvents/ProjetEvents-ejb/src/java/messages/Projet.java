@@ -5,6 +5,8 @@
  */
 package messages;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Amaury_PC
@@ -17,4 +19,7 @@ public class Projet {
     private String date;
     
     private Salle salle;
+    private ArrayList<Employe> employes;
+    
+    
 }
