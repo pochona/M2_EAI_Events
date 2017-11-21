@@ -25,7 +25,7 @@ import messages.Projet;
 @LocalBean
 public class ProjetSingleton {
     
-    @Resource(lookup = "jms/Event_Projet")
+    @Resource(lookup = "Event_Projet")
     private Topic topicProjet;
     
     @Inject
