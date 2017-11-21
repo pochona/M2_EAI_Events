@@ -43,8 +43,6 @@ public class ProjetSingleton {
         return p;
     }
     
-    // autre constructeur ?
-    
     public String annulerPrestation(Projet projet){
         projets.remove(projet);
         return "Prestation annulée avec succès";

@@ -25,7 +25,7 @@ import messages.Salle;
 @LocalBean
 public class SalleSingleton {
 
-    @Resource(lookup = "jms/CommandesEmises")
+    @Resource(lookup = "jms/Event_Salle")
     private Queue queueSalle;
     
     @Inject
