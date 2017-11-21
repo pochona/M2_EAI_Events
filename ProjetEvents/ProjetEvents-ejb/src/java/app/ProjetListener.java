@@ -26,33 +26,32 @@ import messages.Projet;
  *
  * @author Amaury_PC
  */
-public class RestaurationListener implements MessageListener {
+public class ProjetListener implements MessageListener {
     private final MessageProducer mp;
     private final Session session;
 
-    public RestaurationListener(Session session, MessageProducer mp) {
+    public ProjetListener(Session session, MessageProducer mp) {
         this.session = session;
         this.mp = mp;
-        
+        System.out.println("creation");
     }
 
     @Override
     public void onMessage(Message message) {
-
+        Projet projet = null;
         try {
             Topic source = (Topic) message.getJMSDestination();
 
             // System.out.println("MSG RECU " + source.getTopicName());
-            String topicName = source.getTopicName().replace('_', '/');
+            String topicName = source.getTopicName();
 
-            if (topicName.equalsIgnoreCase(Nommage.TOPIC_PROJET)) {
-
+            if (topicName.equalsIgnoreCase(Nommage.TOPIC_DEMANDE)) {
                 if (message instanceof ObjectMessage) {
                     ObjectMessage om = (ObjectMessage) message;
                     Object obj = om.getObject();
                     if (obj instanceof Projet) {
-                        Projet projet = (Projet) obj;
-                        System.out.println("Commande " + projet.getRefProjet() + " reçue --> vérifier coord. bancaires");
+                        projet = (Projet) obj;
+                        System.out.println("Projet " + projet.getRefProjet() + " reçue");
                         // System.out.println("IBAN : " + iban);
                         // TODO: Client SOAP ou REST pour effectuer la vérif
                         
@@ -69,30 +68,16 @@ public class RestaurationListener implements MessageListener {
                             System.out.println("\t --> Coord. bancaires NOK");
                         }*/
                         // envoi de la réponse de la banque
-                        ObjectMessage msg = session.createObjectMessage(projet);
-                        msg.setJMSType(Nommage.MSG_PROJET);
+                        ObjectMessage msg = session.createObjectMessage();
+                        msg.setObject(projet);
+                        //msg.setJMSType(Nommage.MSG_PROJET);
                         mp.send(msg);
                     }
                 }
             }
-/*
-            if (topicName.equalsIgnoreCase(Nommage.TOPIC_CMDS_TRAITEES)) {
 
-                if (message instanceof ObjectMessage) {
-                    ObjectMessage om = (ObjectMessage) message;
-                    Object obj = om.getObject();
-                    if (obj instanceof Commande) {
-                        Commande cmd = (Commande) obj;
-                        System.out.println("Commande " + cmd.getNumCommande() + " traitée reçue --> effectuer débit");
-                        System.out.println("\t TODO...");
-
-                        // TODO: Client SOAP ou REST pour effectuer le débit
-                    }
-                }
-
-            }*/
         } catch (JMSException ex) {
-            Logger.getLogger(RestaurationListener.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProjetListener.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
