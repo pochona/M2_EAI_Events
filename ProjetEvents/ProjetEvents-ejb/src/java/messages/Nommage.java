@@ -6,15 +6,18 @@ package messages;
  */
 public class Nommage {
     
-    public final static String FABRIQUE_CONNEXIONS = "jms/ConnectionFactoryEvents";
+    public final static String FABRIQUE_CONNEXIONS = "ConnectionFactoryEvents";
     
-    public final static String TOPIC_DEMANDE = "jms/Event_Demande";
-    public final static String TOPIC_REPONSE = "jms/Event_Reponse";
-    public final static String TOPIC_PROJET = "jms/Event_Projet";
-    public final static String TOPIC_CONFIRMATION = "jms/Event_Confirmation";
+    public final static String TOPIC_DEMANDE = "Event_Demande";
+    public final static String TOPIC_REPONSE = "Event_Reponse";
+    public final static String TOPIC_PROJET = "Event_Projet";
+    public final static String TOPIC_CONFIRMATION = "Event_Confirmation";
     
-    public final static String QUEUE_SALLE = "jms/Event_Salle";
-    public final static String QUEUE_ESTIMATION = "jms/Event_Estimation";
+    public final static String QUEUE_SALLE = "Event_Salle";
+    public final static String QUEUE_ESTIMATION = "Event_Estimation";
+    
+    public final static String MSG_PROJET = "PROJET";
+    
     /*
     public final static String MSG_STOCK = "STOCK";
     public final static String MSG_FACTURATION = "FACTURATION";
