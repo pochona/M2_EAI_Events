@@ -5,21 +5,14 @@
  */
 package ressources;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.*;
+import javax.ws.rs.*;
+
 
 /**
  * REST Web Service
  *
- * @author Basti
+ * @author Babas
  */
 @Path("reservation")
 public class ReservationResource {
@@ -44,14 +37,14 @@ public class ReservationResource {
         throw new UnsupportedOperationException();
     }
 
-    /**
+   /**
      * POST method for updating or creating an instance of CommandeResource
      * @param content representation for the resource
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void postJson(@FormParam("nom") String nom) {
-        System.out.println(nom);
+    public String postJson(@FormParam("nom") String nom) {
+        return nom;
     }
 }
