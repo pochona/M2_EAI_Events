@@ -44,7 +44,7 @@ public class ReservationResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String postJson(@FormParam("nom") String nom) {
-        return nom;
+    public String postJson(@FormParam("value") String value) {
+        return value;
     }
 }

@@ -5,8 +5,18 @@
  */
 
 
-var app = angular.module('eventApp', ['ngMaterial']);
+angular.module('eventApp', ['ngMaterial'])
 
-app.controller('AppCtrl', function() {
+.controller('AppCtrl', function($http) {
     console.log("ok")
+    $scope.val = {value : "ok"};
+    var url = "http://localhost:29201/ProjetEvents-war/webresources/reservation";
+    $http({
+    method : "POST",
+    url : url,
+    data : $scope.val,
+    headers : {
+        'Content-Type' : 'application/json'
+    }
+    }).then( _success, _error );
 });
