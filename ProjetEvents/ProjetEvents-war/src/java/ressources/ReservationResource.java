@@ -7,6 +7,7 @@ package ressources;
 
 import javax.ws.rs.core.*;
 import javax.ws.rs.*;
+import use.Projet;
 
 
 /**
@@ -43,8 +44,8 @@ public class ReservationResource {
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String postJson(@FormParam("value") String value) {
-        return value;
+    public Response postJson(Projet p) {
+        System.out.println(p);
+        return null;
     }
 }

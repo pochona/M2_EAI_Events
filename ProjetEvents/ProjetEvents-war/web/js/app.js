@@ -8,15 +8,21 @@
 angular.module('eventApp', ['ngMaterial'])
 
 .controller('AppCtrl', function($http) {
-    console.log("ok")
-    $scope.val = {value : "ok"};
-    var url = "http://localhost:29201/ProjetEvents-war/webresources/reservation";
-    $http({
-    method : "POST",
-    url : url,
-    data : $scope.val,
-    headers : {
-        'Content-Type' : 'application/json'
-    }
-    }).then( _success, _error );
+
+
+})
+
+.controller('CreerReservationCtrl', function($scope, $http) {
+
+	$scope.addReservation = function () {
+		console.log($scope.reservation)
+		var url = "http://localhost:27369/ProjetEvents-war/webresources/reservation";
+		$http.post(url, $scope.reservation)
+		.then(function mySuccess(response) {
+			$scope.return = response.data;
+		}, function myError(response) {
+			$scope.return = response.statutText;
+		});
+	};
+    
 });
