@@ -1,4 +1,4 @@
-package app;
+package Traiteur;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
