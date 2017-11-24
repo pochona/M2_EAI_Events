@@ -24,17 +24,38 @@ public class GestionRestauration extends ClientJMS {
 
     private MessageConsumer mc;
     private MessageProducer mp;
-
-    private final HashMap<Integer, Projet> projetATraiter;
+    private AppJMS appJms;
+    
+    private HashMap<Integer, Projet> projetATraiter;
     
 
     private LivraisonRessource_JerseyClient client;
     
 
-    public GestionRestauration() {
-
+    public GestionRestauration(AppJMS appJms) {
         projetATraiter = new HashMap();
         client = new LivraisonRessource_JerseyClient();
+        appJms = appJms;
+        boolean theEnd = false;
+        
+        try {
+            this.initJMS();
+            this.setProducerConsumer();
+            this.startJMS();
+            System.out.println("*** Service Restauration démarré. ***");
+            
+            do {
+                Message msg = this.mc.receive();
+                System.out.println("----------");
+                
+                this.processMessage(msg);
+            } while (!theEnd);
+            this.closeJMS();
+        } catch (JMSException ex) {
+            Logger.getLogger(GestionRestauration.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(GestionRestauration.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void setProducerConsumer() {
@@ -131,29 +152,6 @@ public class GestionRestauration extends ClientJMS {
         } catch (Exception ex) {
             Logger.getLogger(GestionRestauration.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    /**
-     * @param args the command line arguments
-     * @throws java.lang.Exception
-     */
-    public static void main(String[] args) throws Exception {
-
-        boolean theEnd = false;
-
-        GestionRestauration gc = new GestionRestauration();
-        gc.initJMS();
-        gc.setProducerConsumer();
-        gc.startJMS();
-        System.out.println("*** Service Restauration démarré. ***");
-
-        do {
-            Message msg = gc.mc.receive();
-            System.out.println("----------");
-            
-            gc.processMessage(msg);
-        } while (!theEnd);
-        gc.closeJMS();
     }
 
     static class LivraisonRessource_JerseyClient {

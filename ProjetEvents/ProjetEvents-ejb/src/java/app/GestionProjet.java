@@ -1,6 +1,7 @@
 package app;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,9 +21,27 @@ public class GestionProjet extends ClientJMS {
     private MessageConsumer mc1;
     private MessageConsumer mc2;
     private MessageProducer mp;
-
-    public GestionProjet() {
-
+    private AppJMS appJms;
+    
+    public GestionProjet(AppJMS appJms) {
+        appJms = appJms;
+        try {
+            this.initJMS();
+            this.setProducerConsumer();
+            this.startJMS();
+            System.out.println("*** Service de Projet démarré. ***");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            do {
+                System.out.println("Appuyez sur 'Q' pour quitter.");
+            } while (!br.readLine().equalsIgnoreCase("Q"));
+            this.closeJMS();
+        } catch (JMSException ex) {
+            Logger.getLogger(GestionProjet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionProjet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(GestionProjet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 
@@ -49,24 +68,6 @@ public class GestionProjet extends ClientJMS {
         } catch (JMSException | NamingException ex) {
             Logger.getLogger(GestionProjet.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    /**
-     * @param args the command line arguments
-     * @throws java.lang.Exception
-     */
-    public static void main(String[] args) throws Exception {
-
-        GestionProjet monServiceRestauration = new GestionProjet();
-        monServiceRestauration.initJMS();
-        monServiceRestauration.setProducerConsumer();
-        monServiceRestauration.startJMS();
-        System.out.println("*** Service de Projet démarré. ***");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        do {
-            System.out.println("Appuyez sur 'Q' pour quitter.");
-        } while (!br.readLine().equalsIgnoreCase("Q"));
-        monServiceRestauration.closeJMS();
     }
 
 }
