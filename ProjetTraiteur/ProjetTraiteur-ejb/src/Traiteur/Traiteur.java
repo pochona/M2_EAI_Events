@@ -1,30 +1,36 @@
+package Traiteur;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
-
 import java.util.Date;
+import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.ejb.Stateless;
+import javax.xml.ws.WebServiceClient;
 
 /**
  *
  * @author Caro
  */
-@WebService(serviceName = "Traiteur")
-@Stateless()
+@WebServiceClient(name = "Traiteur", targetNamespace = "http://traiteur/", wsdlLocation = "http://localhost:8080/TraiteurWeb/Traiteur?wsdl")
+
 public class Traiteur {
+    
+//@WebService (serviceName = "Traiteur")
+
+    private static final Logger LOG = Logger.getLogger(Traiteur.class.getName());
+    
 
     /**
      * Web service operation
      */
     @WebMethod(operationName = "reserverTraiteur")
-    public boolean reserverTraiteur(@WebParam(name = "refProjet") String refProjet, @WebParam(name = "dateEvent") Date dateEvent, @WebParam(name = "participants") int participants) {
-        //TODO write your implementation code here:
+    public boolean reserverTraiteur(@WebParam(name = "refProjet") String refProjet, @WebParam(name = "dateEvent") Date dateEvent, @WebParam(name = "numInvite") int numInvite) {
+        LOG.info("Traiteur commandé pour le projet " + refProjet + "qui aura lieu le " + dateEvent);
         return true;
     }
 
@@ -33,7 +39,10 @@ public class Traiteur {
      */
     @WebMethod(operationName = "annulerTraiteur")
     public boolean annulerTraiteur(@WebParam(name = "refProjet") String refProjet, @WebParam(name = "dateEvent") Date dateEvent) {
-        //TODO write your implementation code here:
+        LOG.info("Traiteur decommandé ");
         return true;
     }
+
+    
+    
 }
