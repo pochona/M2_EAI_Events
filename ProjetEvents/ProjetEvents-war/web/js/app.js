@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+'use strict';
 
 angular.module('eventApp', ['ngMaterial'])
 
@@ -12,11 +13,11 @@ angular.module('eventApp', ['ngMaterial'])
 
 })
 
+
 .controller('CreerReservationCtrl', function($scope, $http) {
 
 	$scope.addReservation = function () {
-		console.log($scope.reservation)
-		var url = "http://localhost:27369/ProjetEvents-war/webresources/reservation";
+		var url = "http://localhost:29201/ProjetEvents-war/webresources/reservation";
 		$http.post(url, $scope.reservation)
 		.then(function mySuccess(response) {
 			$scope.return = response.data;
