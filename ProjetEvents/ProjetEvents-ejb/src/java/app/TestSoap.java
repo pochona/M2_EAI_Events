@@ -1,3 +1,5 @@
+package app;
+
 import javax.xml.soap.*;
 
 public class TestSoap {

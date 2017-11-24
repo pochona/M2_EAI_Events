@@ -1,3 +1,5 @@
+package app;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,11 +10,14 @@ import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.xml.ws.WebServiceClient;
 
 /**
  *
  * @author Caro
  */
+@WebServiceClient(name = "Traiteur", targetNamespace = "http://traiteur/", wsdlLocation = "http://localhost:8080/TraiteurWeb/Traiteur?wsdl")
+
 public class Traiteur {
     
 //@WebService (serviceName = "Traiteur")
